@@ -28,7 +28,7 @@ public class TryMove {
         
         Files.move(FROM, TO.resolve(FROM.getFileName()));
         
-        JOptionPane.showMessageDialog(null,"Movung file at "+(dtf.format(now))+" run successfully");       
+        JOptionPane.showMessageDialog(null,"Moving file at "+(dtf.format(now))+" run successfully");       
     }
     
 }
