@@ -28,7 +28,9 @@ public class TryMove {
         
         Files.move(FROM, TO.resolve(FROM.getFileName()));
         
-        JOptionPane.showMessageDialog(null,"Moving file at "+(dtf.format(now))+" run successfully");       
+        JOptionPane.showMessageDialog(null,"Moving file at "+(dtf.format(now))+" run successfully");
+        
+        //nanti ditambahkan try catch error untuk file yang tidak ada didalam folder
     }
     
 }
