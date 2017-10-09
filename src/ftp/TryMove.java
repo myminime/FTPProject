@@ -22,9 +22,15 @@ public class TryMove {
         
         LocalDateTime now = LocalDateTime.now();
         
-        Path FROM =  Paths.get("G:\\asal\\");
+        //PC rumah
+        //Path FROM =  Paths.get("G:\\asal\\");
+        //Laptop kantor
+        Path FROM =  Paths.get("D:/asal/coba");
         
-        Path TO = Paths.get("G:\\tujuan");
+        //PC rumah
+        //Path TO = Paths.get("G:\\tujuan");
+        //Laptop kantor
+        Path TO = Paths.get("D:/tujuan");
         
         Files.move(FROM, TO.resolve(FROM.getFileName()));
         
