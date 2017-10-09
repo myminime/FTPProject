@@ -25,7 +25,7 @@ public class TryMove {
         //PC rumah
         //Path FROM =  Paths.get("G:\\asal\\");
         //Laptop kantor
-        Path FROM =  Paths.get("D:/asal/coba");
+        Path FROM =  Paths.get("D/asal/");
         
         //PC rumah
         //Path TO = Paths.get("G:\\tujuan");
