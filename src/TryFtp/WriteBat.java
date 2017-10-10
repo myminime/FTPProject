@@ -19,7 +19,7 @@ public class WriteBat {
     
     public static void main(String[] args) throws IOException {
         
-        File newFile = new File("G:/SmartMove/move.bat");
+        File newFile = new File("C:/SmartMove/move.bat");
         FileWriter wFile = new FileWriter(newFile);
         
         try (BufferedWriter bw = new BufferedWriter(wFile)) {
