@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ftp;
+package Cobaftp;
 
+import java.io.File;
 import java.nio.file.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,17 +23,21 @@ public class TryMove {
         
         LocalDateTime now = LocalDateTime.now();
         
-        //PC rumah
-        //Path FROM =  Paths.get("G:\\asal\\");
-        //Laptop kantor
-        Path FROM =  Paths.get("D/asal/");
+        //File txtFile = new File("G:/asal/.txt");
         
         //PC rumah
-        //Path TO = Paths.get("G:\\tujuan");
+        Path FROM =  Paths.get("G:/asal/");
         //Laptop kantor
-        Path TO = Paths.get("D:/tujuan");
+        //Path FROM =  Paths.get("D/asal/*");
         
+        //PC rumah
+        Path TO = Paths.get("G:/tujuan");
+        //Laptop kantor
+        //Path TO = Paths.get("D:/tujuan");
+        
+        //Files.move(FROM, TO.resolve(FROM))
         Files.move(FROM, TO.resolve(FROM.getFileName()));
+        //Files.move(FROM, TO.resolve(FROM.getFileName() + "\r\n"));
         
         JOptionPane.showMessageDialog(null,"Moving file at "+(dtf.format(now))+" run successfully");
         
