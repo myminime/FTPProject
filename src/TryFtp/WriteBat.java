@@ -21,24 +21,30 @@ public class WriteBat {
         
         File newFile = new File("C:/SmartMove/move.bat");
         FileWriter wFile = new FileWriter(newFile);
+        Runtime runtime = Runtime.getRuntime();
         
         try (BufferedWriter bw = new BufferedWriter(wFile)) {
             bw.write("set source_drive");
-            bw.write("=g:\\asal"+"\n");
+            bw.write("=g:\\asal"); //parameter diganti input text field
+            bw.write("\n");
             bw.write("move %source_drive%\\*.txt ");
-            bw.write("g:\\tujuan");
+            bw.write("g:\\tujuan"); //parameter diganti input text field
         }
-        System.out.println("file written");
+        System.out.println("file added");
         
         if (newFile.exists()) {
-            newFile.createNewFile();
+            newFile.createNewFile();    
         }
         try {
             newFile.createNewFile();
             }
-        catch (Exception e){
-            e.printStackTrace();
+        catch (IOException e){
             }
+        try {
+            runtime.exec("cmd /c start C:\\SmartMove\\move.bat");
+            //runtime.exec("timeout /t %3");
+            runtime.exec("taskkill /im cmd.exe /f");
+        }
+        catch (IOException e) {}
     }
-    
 }
