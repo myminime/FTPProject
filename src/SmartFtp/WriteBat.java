@@ -24,8 +24,8 @@ public class WriteBat {
         Runtime runtime = Runtime.getRuntime();
         
         try (BufferedWriter bw = new BufferedWriter(wFile)) {
-            bw.write("set source_drive");
-            bw.write("=g:\\asal"); //parameter diganti input text field
+            bw.write("set source_drive=");
+            bw.write("g:\\asal"); //parameter diganti input text field
             bw.write("\n");
             bw.write("move %source_drive%\\*.txt ");
             bw.write("g:\\tujuan"); //parameter diganti input text field
