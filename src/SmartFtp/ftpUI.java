@@ -5,6 +5,14 @@
  */
 package SmartFtp;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author JustSonny
@@ -28,11 +36,11 @@ public class ftpUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        dirAwal = new javax.swing.JTextField();
+        dirTujuan = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        runbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,59 +48,60 @@ public class ftpUI extends javax.swing.JFrame {
         jInternalFrame1.setTitle("Smart");
         jInternalFrame1.setVisible(true);
 
-        jTextField1.setToolTipText("");
-        jTextField1.setAction(jTextField1.getAction());
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        dirAwal.setToolTipText("");
+        dirAwal.setAction(dirAwal.getAction());
+        dirAwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                dirAwalActionPerformed(evt);
             }
         });
 
-        jTextField2.setText("tujuan");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        dirTujuan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                dirTujuanActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Source Directory");
+        jLabel1.setText("Direktori asal");
 
-        jLabel2.setText("Target Directory");
+        jLabel2.setText("Direktori Tujuan");
 
-        jButton1.setText("jButton1");
+        runbutton.setText("Run");
+        runbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runbuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jButton1)))
+                .addGap(58, 58, 58)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(runbutton)
+                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1)
+                        .addComponent(dirTujuan, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dirAwal, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(dirAwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(36, 36, 36))
+                .addComponent(dirTujuan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(runbutton)
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -109,13 +118,59 @@ public class ftpUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void dirAwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirAwalActionPerformed
+        
+    }//GEN-LAST:event_dirAwalActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void dirTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dirTujuanActionPerformed
+        
+    }//GEN-LAST:event_dirTujuanActionPerformed
+
+    private void runbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runbuttonActionPerformed
+        String awal = this.dirAwal.getText();
+        String tujuan = this.dirTujuan.getText();
+        File newFile = new File("D:/Proyekan/omahanyar/sumber/exec.bat");
+        //File newFile = new File("C:/SmartMove/move.bat");
+        FileWriter wFile = null;
+        try {
+            wFile = new FileWriter(newFile);
+        } catch (IOException ex) {
+            Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Runtime runtime = Runtime.getRuntime();
+        
+        try (BufferedWriter bw = new BufferedWriter(wFile)) {
+            bw.write("set source_drive=");
+            bw.write(awal); //source path parameter diganti input text field
+            bw.write("\n");
+            bw.write("move %source_drive%\\*.txt ");
+            bw.write(tujuan); //destination path parameter diganti input text field
+        } catch (IOException ex) {
+            Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("file added");
+        
+        if (newFile.exists()) {
+            try {    
+                newFile.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            newFile.createNewFile();
+            }
+        catch (IOException e){
+            }
+        try {
+            runtime.exec("cmd /c start D:\\Proyekan\\omahanyar\\sumber\\exec.bat");
+            //runtime.exec("timeout /t %3");
+            runtime.exec("taskkill /im cmd.exe /f");
+            JOptionPane.showMessageDialog(this,"File Berhasil Dipindah");
+        }
+        catch (IOException e) {}
+        
+    }//GEN-LAST:event_runbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +208,11 @@ public class ftpUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField dirAwal;
+    private javax.swing.JTextField dirTujuan;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton runbutton;
     // End of variables declaration//GEN-END:variables
 }
