@@ -203,6 +203,7 @@ public class ftpUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ftpUI().setVisible(true);
+                
             }
         });
     }

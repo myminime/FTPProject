@@ -79,7 +79,6 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="dirAwal">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection component="dirAwal" name="getAction" type="method"/>
             </Property>
