@@ -67,9 +67,9 @@ public class ftpUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Direktori asal");
+        jLabel1.setText("Source Directory");
 
-        jLabel2.setText("Direktori Tujuan");
+        jLabel2.setText("Destination Directory");
 
         runbutton.setText("Run");
         runbutton.addActionListener(new java.awt.event.ActionListener() {
