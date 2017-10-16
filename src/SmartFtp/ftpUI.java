@@ -213,7 +213,6 @@ public class ftpUI extends javax.swing.JFrame {
             }
         try {
             runtime.exec("cmd /c start C:/Smart/smart.bat");
-            //runtime.exec("timeout /t %3");
             runtime.exec("taskkill /im cmd.exe /f");
             JOptionPane.showMessageDialog(this,"File Moved Successfully");
         }
