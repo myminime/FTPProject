@@ -185,10 +185,10 @@ public class ftpUI extends javax.swing.JFrame {
         
         try (BufferedWriter bw = new BufferedWriter(wFile)) {
             bw.write("set source_drive=");
-            bw.write(awal); //source path parameter diganti input text field
+            bw.write('"'+awal+'"'); //source path parameter diganti input text field
             bw.write("\n");
             bw.write("move %source_drive%\\*.txt ");
-            bw.write(tujuan); //destination path parameter diganti input text field
+            bw.write('"'+tujuan+'"'); //destination path parameter diganti input text field
         } catch (IOException ex) {
             Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
         }
