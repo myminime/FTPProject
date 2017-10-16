@@ -174,6 +174,11 @@ public class ftpUI extends javax.swing.JFrame {
         String awal = this.dirAwal.getText();
         String tujuan = this.dirTujuan.getText();
         //File newFile = new File("D:/Proyekan/omahanyar/sumber/exec.bat");
+        if (dirAwal.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"harap mengisi Direktori Asal");
+        } else if (dirTujuan.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"harap mengisi Direktori Tujuan");
+        } else {
         File newFile = new File("C:/Smart/smart.bat");
         FileWriter wFile = null;
         try {
@@ -213,7 +218,7 @@ public class ftpUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"File Moved Successfully");
         }
         catch (IOException e) {}
-        
+        }
     }//GEN-LAST:event_runbuttonActionPerformed
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
