@@ -200,7 +200,7 @@ public class ftpUI extends javax.swing.JFrame {
             runtime.exec("cmd /c start D:\\Proyekan\\omahanyar\\sumber\\exec.bat");
             //runtime.exec("timeout /t %3");
             runtime.exec("taskkill /im cmd.exe /f");
-            JOptionPane.showMessageDialog(this,"File Berhasil Dipindah");
+            JOptionPane.showMessageDialog(this,"File Moved Successfully");
         }
         catch (IOException e) {}
         
