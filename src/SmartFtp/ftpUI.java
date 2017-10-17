@@ -194,6 +194,10 @@ public class ftpUI extends javax.swing.JFrame {
             bw.write("\n");
             bw.write("move %source_drive%\\*.txt ");
             bw.write('"'+tujuan+'"'); //destination path parameter diganti input text field
+            bw.write("\n");
+            bw.write("timeout /t 5");
+            bw.write("\n");
+            bw.write("taskkill /im cmd.exe /f");
         } catch (IOException ex) {
             Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -213,8 +217,6 @@ public class ftpUI extends javax.swing.JFrame {
             }
         try {
             runtime.exec("cmd /c start C:/Smart/smart.bat");
-            runtime.exec("taskkill /im cmd.exe /f");
-            JOptionPane.showMessageDialog(this,"File Moved Successfully");
         }
         catch (IOException e) {}
         }
