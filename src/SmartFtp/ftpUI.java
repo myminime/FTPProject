@@ -175,9 +175,9 @@ public class ftpUI extends javax.swing.JFrame {
         String tujuan = this.dirTujuan.getText();
         //File newFile = new File("D:/Proyekan/omahanyar/sumber/exec.bat");
         if (dirAwal.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"harap mengisi Direktori Asal");
+            JOptionPane.showMessageDialog(this,"Please Fill Source Directory");
         } else if (dirTujuan.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"harap mengisi Direktori Tujuan");
+            JOptionPane.showMessageDialog(this,"Please Fill Destination Directory");
         } else {
         File newFile = new File("C:/Smart/smart.bat");
         FileWriter wFile = null;
