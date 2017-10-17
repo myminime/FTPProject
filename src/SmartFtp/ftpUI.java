@@ -173,13 +173,14 @@ public class ftpUI extends javax.swing.JFrame {
     private void runbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runbuttonActionPerformed
         String awal = this.dirAwal.getText();
         String tujuan = this.dirTujuan.getText();
-        //File newFile = new File("D:/Proyekan/omahanyar/sumber/exec.bat");
+        //File newFile = new File("D:\\Proyekan\\omahanyar\\sumber\\exec.bat"); 
+        File newFile = new File(dirAwal.getText()+"\\exec.bat");// langsung di sikat file exec ditaruh di direkori awal
         if (dirAwal.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please Fill Source Directory");
         } else if (dirTujuan.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please Fill Destination Directory");
         } else {
-        File newFile = new File("C:/Smart/smart.bat");
+        //File newFile = new File("C:/Smart/smart.bat");
         FileWriter wFile = null;
         try {
             wFile = new FileWriter(newFile);
@@ -202,6 +203,8 @@ public class ftpUI extends javax.swing.JFrame {
             Logger.getLogger(ftpUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("file added");
+        System.out.println(dirAwal);
+        System.out.println(dirAwal.getText());
         
         if (newFile.exists()) {
             try {    
@@ -216,7 +219,8 @@ public class ftpUI extends javax.swing.JFrame {
         catch (IOException e){
             }
         try {
-            runtime.exec("cmd /c start C:/Smart/smart.bat");
+            //runtime.exec("cmd /c start D:/Proyekan/omahanyar/sumber/exec.bat");
+            runtime.exec("cmd /c start "+dirAwal.getText()+"/exec.bat");
         }
         catch (IOException e) {}
         }
